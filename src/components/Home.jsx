@@ -8,22 +8,22 @@ const Home = () => {
   // // const nevigate = useNavigate();
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      const res = await fetch("http://localhost:5000/cart/getProduct");
-      const data = await res.json();
+  // useEffect(() => {
+  //   const getProduct = async () => {
+  //     const res = await fetch("http://localhost:5000/cart/getProduct");
+  //     const data = await res.json();
 
-      // const data = localStorage.getItem("products");
-      if (data) {
-        setCartProducts(data);
-      }
-    };
-    getProduct();
-  }, []);
+  //     // const data = localStorage.getItem("products");
+  //     if (data) {
+  //       setCartProducts(data);
+  //     }
+  //   };
+  //   getProduct();
+  // }, []);
   const fetchStore = async () => {
     try {
       const rawData = await fetch(
-        "https://fakestoreapi.noksha.dev/api/products",
+        `${import.meta.env.STORE_API}/api/products`,
         {
           method: "GET",
         },

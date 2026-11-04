@@ -9,7 +9,8 @@ function Cart() {
   const [cartProduct, setCartProduct] = useState([]);
   useEffect(() => {
     const getCartProducts = async () => {
-      const res = await fetch("http://localhost:5000/cart/getProduct");
+      // const res = await fetch("http://localhost:5000/cart/getProduct");
+      const res = await fetch(`${import.meta.env.WEB_URL}/cart/getProduct`);
       const data = await res.json();
 
       if (data) {
@@ -49,7 +50,7 @@ function Cart() {
     };
     console.log(decreasedQuantity, "decreased quantity");
 
-    const res = await fetch("http://localhost:5000/cart/decrease", {
+    const res = await fetch(`${import.meta.env.WEB_URL}/cart/decrease`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +99,7 @@ function Cart() {
     };
     console.log(increasedQuantity, "increased successfully");
 
-    const res = await fetch("http://localhost:5000/cart/increase", {
+    const res = await fetch(`${import.meta.env.WEB_URL}/cart/increase`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +112,7 @@ function Cart() {
   };
 
   const deleteCartItems = async (id) => {
-    const res = await fetch("http://localhost:5000/cart/delete", {
+    const res = await fetch(`${import.meta.env.WEB_URL}/cart/delete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

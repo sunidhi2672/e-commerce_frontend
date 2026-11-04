@@ -81,7 +81,7 @@ const Product = () => {
   const fetchSingleProduct = async () => {
     try {
       const rawData = await fetch(
-        `https://fakestoreapi.noksha.dev/api/products/${id}`,
+        `${import.meta.env.STORE_API}/api/products/${id}`,
         {
           method: "GET",
         },
@@ -99,7 +99,7 @@ const Product = () => {
 
   const getCartProducts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/cart/getProduct");
+      const res = await fetch(`${import.meta.env.WEB_URL}/cart/getProduct`);
 
       const data = await res.json();
 
@@ -156,7 +156,7 @@ const Product = () => {
           quantity: existingProduct.quantity + 1,
         };
 
-        const res = await fetch("http://localhost:5000/cart/create", {
+        const res = await fetch(`${import.meta.env.WEB_URL}/cart/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -177,7 +177,7 @@ const Product = () => {
           quantity: 1,
         };
 
-        const res = await fetch("http://localhost:5000/cart/create", {
+        const res = await fetch(`${import.meta.env.WEB_URL}/cart/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
