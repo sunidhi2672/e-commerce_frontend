@@ -10,7 +10,7 @@ const [cartCount, setCartCount] = useState([]);
 useEffect(()=>{
   
  const getCartProducts = async () => {
-      const res = await fetch("http://localhost:5000/cart/getProduct");
+      const res = await fetch(`${import.meta.env.WEB_URL}/cart/getProduct`);
       const data = await res.json();
 
       setCartCount(data.length)
