@@ -19,7 +19,7 @@ useEffect(()=>{
 },[])
 
   return (
-    <div className="flex justify-between items-center p-3 border border-gray-300 shadow-md">
+    <div className="flex justify-between items-center p-3 border border-gray-300 shadow-md w-full sm:w-full md:w-3/4 lg:w-1/2 xl:w-1/3 max-w-full px-4 sm:px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-sm sm:text-base md:text-lg lg:text-xl">
       <h1 className="text-5xl text-blue-400 font-extrabold">
         <span className="text-mist-950">Smart</span>Store
       </h1>

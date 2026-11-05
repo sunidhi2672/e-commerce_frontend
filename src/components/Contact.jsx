@@ -1,6 +1,6 @@
 function Contact() {
   return (
-    <div>
+    <div className="w-full sm:w-full md:w-3/4 lg:w-1/2 xl:w-1/3 max-w-full px-4 sm:px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-sm sm:text-base md:text-lg lg:text-xl">
       <h1 className="text-5xl font-extrabold flex justify-center mt-10">
         Contact Us
       </h1>
