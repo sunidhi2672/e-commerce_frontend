@@ -1,3 +1,4 @@
+
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -6,54 +7,71 @@ import { CartContext } from "../context/CartContext";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
-const [cartCount, setCartCount] = useState([]);
-useEffect(()=>{
-  
- const getCartProducts = async () => {
-      const res = await fetch(`${import.meta.env.WEB_URL}/cart/getProduct`);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const getCartProducts = async () => {
+      const res = await fetch(
+        `${import.meta.env.VITE_WEB_URL}/cart/getProduct`
+      );
       const data = await res.json();
 
-      setCartCount(data.length)
- };
- getCartProducts();
-},[])
+      setCartCount(data.length);
+    };
+
+    getCartProducts();
+  }, []);
 
   return (
-    <div className="flex justify-between items-center p-3 border border-gray-300 shadow-md w-full sm:w-full md:w-3/4 lg:w-1/2 xl:w-1/3 max-w-full px-4 sm:px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-sm sm:text-base md:text-lg lg:text-xl">
-      <h1 className="text-5xl text-blue-400 font-extrabold">
+    <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 p-3 sm:p-4 border border-gray-300 shadow-md">
+
+      {/* Logo */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-blue-400 font-extrabold">
         <span className="text-mist-950">Smart</span>Store
       </h1>
-      <nav className="text-l font-bold">
-        <ul className="flex gap-10 text-2xl items-center pr-20">
+
+      {/* Navigation */}
+      <nav className="w-full sm:w-auto">
+        <ul className="flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-8 lg:gap-10 text-base sm:text-lg md:text-xl font-bold items-center">
+
           <Link to={"/"}>
             <li className="cursor-pointer">Home</li>
           </Link>
+
           <Link to={"/shop"}>
             <li className="cursor-pointer">Shop</li>
           </Link>
+
           <Link to={"/about"}>
             <li className="cursor-pointer">About</li>
           </Link>
+
           <Link to={"/contact"}>
             <li className="cursor-pointer">Contact</li>
           </Link>
-          {/* <Link to={"/cart"}>
-          <li className="cursor-pointer">Cart</li>
-          </Link> */}
+
         </ul>
       </nav>
 
-      <div className="flex gap-3 text-3xl">
-        <FaSearch />
+      {/* Search and Cart */}
+      <div className="flex gap-4 text-2xl sm:text-3xl items-center">
+
+        <FaSearch className="cursor-pointer" />
+
         <Link to={"/cart"}>
-          <p className="cursor-pointer flex ">
+          <p className="cursor-pointer flex items-center">
+
             <AiOutlineShoppingCart />
-            <span className="text-sm pl-1 flex bg-black text-white items-center font-medium border-2 mr-2 h-5 w-5 rounded-full">
+
+            <span className="text-sm ml-1 flex bg-black text-white items-center justify-center font-medium border-2 h-5 w-5 rounded-full">
               {cartCount}
             </span>
+
           </p>
         </Link>
+
       </div>
+
     </div>
   );
 };
